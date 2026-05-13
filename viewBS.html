@@ -1,0 +1,41 @@
+{% extends "base1.html" %}
+
+{% block title %} ViewBS {% endblock title %}
+
+{% block body %}
+<h2>Manage EXE Files</h2>
+
+<!-- 📤 Select an Existing EXE File -->
+<form method="POST" class="exe-form">
+    {% csrf_token %}
+
+    <label for="name">File Name:</label>
+    <input type="text" name="name" id="name" placeholder="Enter EXE file name" required>
+
+    <label for="file_path">Select EXE File Path:</label>
+    <select name="file_path" id="file_path" required>
+        <option value="Y:\Django\project3\DeepByte\uploads\exe files\7z2409-x64.exe">7-Zip</option>
+        <option value="Y:\Django\project3\DeepByte\uploads\exe files\ccsetup636.exe">CCleaner</option>
+        <option value="Y:\Django\project3\DeepByte\uploads\exe files\hwmonitor_1.58.exe">HWMonitor</option>
+        <option value="Y:\Django\project3\DeepByte\uploads\exe files\OBS-Studio-31.0.3-Windows-Installer.exe">OBS Studio</option>
+        <option value="Y:\Django\project3\DeepByte\uploads\exe files\RevoUninProSetup.exe">Revo Uninstaller</option>
+        <option value="Y:\Django\project3\DeepByte\uploads\exe files\vlc-3.0.21-win64.exe">VLC Media Player</option>
+    </select>
+
+    <button type="submit">Save File Path</button>
+</form>
+
+<hr>
+
+<!-- 📥 List of Available EXE Files -->
+<h3>Available EXE Files</h3>
+<ul>
+    {% for file in files %}
+        <li>
+            {{ file.name }}  
+            <a href="{{ file.file_path }}" download>Download</a>
+        </li>
+    {% endfor %}
+</ul>
+
+{% endblock body %}

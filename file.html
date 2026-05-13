@@ -1,0 +1,127 @@
+{% extends "base1.html" %}
+
+{% block title %} File {% endblock title %}
+
+{% block body %}
+<style>
+    /* Styling limited to the body section */
+    .exe-section {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #f9fbfd;
+        padding: 30px;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .exe-section h2 {
+        color: #2c3e50;
+        border-left: none;
+        padding-left: 12px;
+        margin-bottom: 25px;
+        font-size: 26px;
+    }
+
+    .exe-section h3 {
+        margin-top: 35px;
+        color: #34495e;
+    }
+
+    .exe-form {
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 6px;
+        border: 1px solid #ddd;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+        margin-bottom: 20px;
+    }
+
+    .exe-form input,
+    .exe-form select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+    }
+
+    .exe-form button {
+        background-color: #3498db;
+        color: white;
+        padding: 10px 18px;
+        font-size: 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .exe-form button:hover {
+        background-color: #2980b9;
+    }
+
+    .exe-files ul {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .exe-files li {
+        padding: 8px 0;
+        border-bottom: 1px solid #e1e1e1;
+        font-size: 16px;
+    }
+
+    .exe-files a {
+        text-decoration: none;
+        color: #2980b9;
+        font-weight: 500;
+        margin-left: 10px;
+    }
+
+    .exe-files a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<div class="exe-section">
+    <h2>Download EXE Files</h2>
+
+   
+    
+        <!-- Detailed Instructions Inside the White Box -->
+        <div class="upload-instructions">
+            <p>This section provides convenient access to a collection of ready-to-use executable files.
+                 Whether you're downloading for installation, evaluation, or analysis, these files are
+                  organized and immediately available for your use. No upload is required — simply browse and
+                   download as needed.</p>
+        </div>
+    
+       
+
+    <!-- 📥 List of Uploaded Files -->
+    <div class="exe-files">
+        <h3>Available EXE Files</h3>
+        <ul>
+            {% for file in files %}
+                <li>
+                    {{ file.name }}
+                    <a href="{{ file.file.url }}" download>Download</a>
+                </li>
+           
+            {% endfor %}
+        </ul>
+
+        <!-- 🔹 Manually Added EXE Files -->
+        <ul>
+            <li>7-Zip <a href="/media/exe_files/7z2409-x64.exe" download>Download</a></li>
+            <li>CCleaner <a href="/media/exe_files/ccsetup636.exe" download>Download</a></li>
+            <li>HWMonitor <a href="/media/exe_files/hwmonitor_1.58.exe" download>Download</a></li>
+            <li>OBS Studio <a href="/media/exe_files/OBS-Studio-31.0.3-Windows-Installer.exe" download>Download</a></li>
+            <li>Revo Uninstaller <a href="/media/exe_files/RevoUninProSetup.exe" download>Download</a></li>
+            <li>VLC Media Player <a href="/media/exe_files/vlc-3.0.21-win64.exe" download>Download</a></li>
+        </ul>
+    </div>
+</div>
+
+{% endblock body %}
+
